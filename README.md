@@ -1,1 +1,1 @@
-![1-vs-1-Fighting-Game.png](https://postimg.cc/GHXFxBDn)
+![alt text](https://postimg.cc/GHXFxBDn)
