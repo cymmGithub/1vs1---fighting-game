@@ -21,4 +21,4 @@ Feel free to grab your friend and give this game a with [LIVE DEMO](https://cymm
 # Controls
 Use <b> WSAD</b> to move/jump and <b>SPACEBAR</b> to attack  - FOR Player 1
 
-Use <b>ArrowKeys</b> to move/jump and <b>'M'</b> keybutton to attack - FOR Player 2
+Use <b>ArrowKeys</b> to move/jump and <b>'M'</b> button to attack - FOR Player 2
