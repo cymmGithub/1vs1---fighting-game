@@ -1,6 +1,6 @@
 # 1vs1 Fighting Game
 
-In this project OOP abstraction topics i covered the most was:
+In this project I practiced my OOP abstraction, topics i covered the most was:
 + Classes and instances
 + Inheriting
 + "this" mechanics
