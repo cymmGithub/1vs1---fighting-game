@@ -6,7 +6,7 @@ In this project OOP abstraction topics i covered the most was:
 + "this" mechanics
 + Object collisions
 
-But also i have a nice touch of 2d canvas and basic sprites animation(Run, Attack, Jump, Death)
+But also i have a nice touch of 2d canvas and basic sprites animation(Run, Attack, Jump, Death).
 In future i would like to add more GUI features like 'Start/Restart button' together with sound effects and background music.
 
 Feel free to grab your friend and give this game a with [LIVE DEMO](https://cymmgithub.github.io/1vs1---fighting-game/) !
