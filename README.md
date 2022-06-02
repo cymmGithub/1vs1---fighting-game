@@ -19,6 +19,6 @@ Feel free to grab your friend and give this game a with [LIVE DEMO](https://cymm
 
 ![alt text](https://s8.gifyu.com/images/ezgif.com-gif-maker5285648ab0cb7dfd.gif)
 # Controls
-Use #### WSAD to move/jump and SPACEBAR to attack  - FOR Player 1
+Use <b> WSAD</b> to move/jump and SPACEBAR to attack  - FOR Player 1
 
 Use #### ArrowKeys to move/jump and 'M' keybutton to attack - FOR Player 2
