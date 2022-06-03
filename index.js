@@ -2,12 +2,17 @@
 /* eslint-disable no-console */
 /* eslint-disable max-len */
 /* eslint-disable default-case */
+import Sprite from "./js/spriteClass.js";
+import Fighter from "./js/fighterClass.js"
+import { determineWhoWins, rectangularCollision } from "./js/utils.js";
+
 const canvas = document.querySelector('canvas');
 const c = canvas.getContext('2d');
 
+
 canvas.width = 1024;
 canvas.height = 576;
-const gravity = 0.7;
+
 c.fillRect(0, 0, canvas.width, canvas.height);
 const background = new Sprite({
   position: {
@@ -159,7 +164,24 @@ const keys = {
   },
 };
 
+// Timer functionality with result display
+let timerId;
+let timer = 60;
+
+function decreaseTimer() {
+
+  if (timer > 0) {
+    timerId = setTimeout(decreaseTimer, 1000);
+    timer--;
+    document.querySelector('#timer').textContent = timer;
+  }
+  if (timer === 0) {
+    document.querySelector('#result').style.display = 'flex';
+    determineWhoWins({ player, enemy });
+  }
+}
 decreaseTimer();
+
 
 function animate() {
   window.requestAnimationFrame(animate);
