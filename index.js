@@ -4,10 +4,15 @@
 /* eslint-disable default-case */
 import Sprite from "./js/spriteClass.js";
 import Fighter from "./js/fighterClass.js"
-import { determineWhoWins, rectangularCollision } from "./js/utils.js";
+import { determineWhoWins, rectangularCollision, soundEffects} from "./js/utils.js";
 
 const canvas = document.querySelector('canvas');
 const c = canvas.getContext('2d');
+
+
+
+
+
 
 
 canvas.width = 1024;
@@ -174,6 +179,7 @@ function decreaseTimer() {
     timerId = setTimeout(decreaseTimer, 1000);
     timer--;
     document.querySelector('#timer').textContent = timer;
+
   }
   if (timer === 0) {
     document.querySelector('#result').style.display = 'flex';
@@ -197,28 +203,30 @@ function animate() {
   player.velocity.x = 0;
 
   // Player movement
-  // Right - Left
-  if (keys.a.pressed && player.lastKey === 'a') {
+  
+  if (keys.a.pressed && player.lastKey === 'a' && player.position.x >= 0) {
     player.velocity.x = -5;
     player.switchSprite('run');
-  } else if (keys.d.pressed && player.lastKey === 'd') {
+    
+  } else if (keys.d.pressed && player.lastKey === 'd' && player.position.x <= 990) {
     player.velocity.x = 5;
     player.switchSprite('run');
   } else {
     player.switchSprite('idle');
   }
   // Player Jumping
-  if (player.velocity.y < 0) {
+  if (player.velocity.y < 0 && player.position.y < 576) {
     player.switchSprite('jump');
   } else if (player.velocity.y > 0) {
     player.switchSprite('fall');
   }
 
+
   // Enemy movement
-  if (keys.ArrowLeft.pressed && enemy.lastKey === 'ArrowLeft') {
+  if (keys.ArrowLeft.pressed && enemy.lastKey === 'ArrowLeft' && enemy.position.x >= 0) {
     enemy.velocity.x = -5;
     enemy.switchSprite('run');
-  } else if (keys.ArrowRight.pressed && enemy.lastKey === 'ArrowRight') {
+  } else if (keys.ArrowRight.pressed && enemy.lastKey === 'ArrowRight' && enemy.position.x <= 990) {
     enemy.switchSprite('run');
     enemy.velocity.x = 5;
   } else {
@@ -236,7 +244,8 @@ function animate() {
     rectangle1: player,
     rectangle2: enemy,
   }) && player.isAttacking && player.framesCurrent === 4) {
-    enemy.takeHit();
+    
+    enemy.takeHit(soundEffects.femaleTakeHit, soundEffects.femalePain);
     player.isAttacking = false;
 
     gsap.to('#enemyHealth', {
@@ -253,7 +262,7 @@ function animate() {
     rectangle1: enemy,
     rectangle2: player,
   }) && enemy.isAttacking && enemy.framesCurrent === 2) {
-    player.takeHit();
+    player.takeHit(soundEffects.maleTakeHit, soundEffects.malePain);
     enemy.isAttacking = false;
     gsap.to('#playerHealth', {
       width: `${player.health}%`,
@@ -290,7 +299,7 @@ window.addEventListener('keydown', (e) => {
         break;
 
       case ' ':
-        player.attack();
+        player.attack(soundEffects.maleAttackSound);
         break;
     }
   }
@@ -311,7 +320,7 @@ window.addEventListener('keydown', (e) => {
         break;
       case 'm':
 
-        enemy.attack();
+        enemy.attack(soundEffects.femaleAttackSound);
         break;
     }
   }

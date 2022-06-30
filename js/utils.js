@@ -1,4 +1,4 @@
-export function rectangularCollision({
+function rectangularCollision({
   rectangle1,
   rectangle2,
 }) {
@@ -8,7 +8,7 @@ export function rectangularCollision({
             && rectangle1.attackBox.position.y <= rectangle2.position.y + rectangle2.height);
 }
 
-export function determineWhoWins({ player, enemy }) {
+function determineWhoWins({ player, enemy }) {
   document.querySelector('#result').style.display = 'flex';
   if (player.health === enemy.health) {
     document.querySelector('#result').textContent = 'draw';
@@ -19,3 +19,18 @@ export function determineWhoWins({ player, enemy }) {
   }
 }
 
+const soundEffects = {
+  maleAttackSound: new Audio('./assets/sounds/swordAttack3.mp3'),
+  femaleAttackSound: new Audio ('./assets/sounds/femaleAttack.mp3'),
+  malePain: new Audio('./assets/sounds/malePain.mp3'),
+  maleTakeHit: new Audio('./assets/sounds/maleTakeHit2.mp3'),
+  femalePain: new Audio('./assets/sounds/femalePain.mp3'),
+  femaleTakeHit: new Audio('./assets/sounds/femaleTakeHit.mp3'),
+
+
+}
+soundEffects.femaleTakeHit.volume = 0.5;
+soundEffects.maleTakeHit.volume = 0.5;
+soundEffects.malePain.volume = 0.5;
+
+export { rectangularCollision, determineWhoWins, soundEffects};

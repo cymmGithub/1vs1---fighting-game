@@ -4,6 +4,7 @@ const canvas = document.querySelector('canvas');
 const gravity = 0.7;
 
 
+
 export default class Fighter extends Sprite {
     constructor({
       position,
@@ -74,18 +75,23 @@ export default class Fighter extends Sprite {
       }
     }
   
-    attack() {
+    attack(attackSound) {
       this.switchSprite('attack2');
       this.isAttacking = true;
+      attackSound.play();
+      
     }
   
-    takeHit() {
+    takeHit(takeHitSound, painSound) {
+      painSound.play();
+      takeHitSound.play();
       this.health -= 20;
       if (this.health <= 0) {
         this.switchSprite('death');
       } else {
         this.switchSprite('takeHit');
       }
+      
     }
   
     switchSprite(sprite) {
